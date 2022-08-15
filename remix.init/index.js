@@ -8,8 +8,8 @@ const PackageJson = require("@npmcli/package-json");
 const semver = require("semver");
 const YAML = require("yaml");
 
-const cleanupCypressFiles = ({ filesEntries, isTypeScript, packageManager }) =>
-  filesEntries.flatMap(([filePath, content]) => {
+const cleanupCypressFiles = ({ fileEntries, isTypeScript, packageManager }) =>
+  fileEntries.flatMap(([filePath, content]) => {
     let newContent = content.replace(
       new RegExp("npx ts-node", "g"),
       isTypeScript ? `${packageManager.exec} ts-node` : "node"
@@ -138,14 +138,14 @@ const main = async ({ isTypeScript, packageManager, rootDirectory }) => {
   );
   const DOCKERFILE_PATH = path.join(rootDirectory, "Dockerfile");
   const CYPRESS_SUPPORT_PATH = path.join(rootDirectory, "cypress", "support");
-  const CYPRESS_COMMANDS_PATH = path.join(CYPRESS_SUPPORT_PATH, "commands.js"); // We renamed this during `create-remix`
+  const CYPRESS_COMMANDS_PATH = path.join(CYPRESS_SUPPORT_PATH, "commands.ts"); // We renamed this during `create-remix`
   const CREATE_USER_COMMAND_PATH = path.join(
     CYPRESS_SUPPORT_PATH,
-    "create-user.js"
+    "create-user.ts"
   ); // We renamed this during `create-remix`
   const DELETE_USER_COMMAND_PATH = path.join(
     CYPRESS_SUPPORT_PATH,
-    "delete-user.js"
+    "delete-user.ts"
   ); // We renamed this during `create-remix`
   const VITEST_CONFIG_PATH = path.join(rootDirectory, "vitest.config.js"); // We renamed this during `create-remix`
 
