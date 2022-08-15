@@ -147,7 +147,7 @@ const main = async ({ isTypeScript, packageManager, rootDirectory }) => {
     CYPRESS_SUPPORT_PATH,
     "delete-user.ts"
   ); // We renamed this during `create-remix`
-  const VITEST_CONFIG_PATH = path.join(rootDirectory, "vitest.config.js"); // We renamed this during `create-remix`
+  const VITEST_CONFIG_PATH = path.join(rootDirectory, "vitest.config.ts"); // We renamed this during `create-remix`
 
   const REPLACER = "indie-stack-template";
 
